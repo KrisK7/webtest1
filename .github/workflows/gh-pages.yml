@@ -2,7 +2,7 @@ name: Deploy Hugo site to Pages
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main" ] # Trigger on push to main branch
 
 jobs:
   build:
@@ -25,5 +25,7 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }} # Built-in secret, no setup needed!
+          github_token: ${{ secrets.GITHUB_TOKEN }} # <- Uses the automatic token
           publish_dir: ./public
+          external_repository: KrisK7/krisk7.github.io
+          publish_branch: main # The branch your Pages site is built from
